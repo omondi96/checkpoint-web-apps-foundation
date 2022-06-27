@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,29 +14,29 @@
       href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@300&display=swap"
       rel="stylesheet"
     />
-
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PW Checker</title>
   </head>
 
   <body>
-    <h1>Password Check</h1>
+    <header>
+      <h1>PW Checker</h1>
+    </header>
+
     <main>
-      <input class="inputPassword" id="firstInput" type="password" />
-      <input class="inputPassword" id="secondInput" type="password" />
-      <button id="changeButton">Check Password</button>
-      <p>Passwords are equal</p>
-      <p id="answerEqual">😢</p>
-      <p>Lower Case Letters</p>
-      <p id="answerLowerCase">😢</p>
-      <p>Upper Case Letters</p>
-      <p id="answerUpperCase">😢</p>
-      <p>Contains Numbers</p>
-      <p id="answerContainsNumbers">😢</p>
-      <p>At least 10 characters</p>
-      <p id="answerTenCharacters">😢</p>
+      <form onsubmit="return false" id="wrapper">
+        <input type="password" id="pw1" /> <br />
+
+        <input type="password" id="pw2" /> <br />
+
+        <button id="showPW">Show Password</button>
+      </form>
+      <div>
+        <div id="equal">passwords are equal 😿</div>
+        <div id="lower">lower case letters 😿</div>
+        <div id="upper">upper case letters 😿</div>
+        <div id="numbers">contains numbers 😿</div>
+        <div id="long">at least character long 😿</div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

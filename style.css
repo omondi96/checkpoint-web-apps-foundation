@@ -1,40 +1,77 @@
 body {
-  background-color: salmon;
+  background: salmon;
 }
-
 main {
   display: grid;
+  align-content: center;
   justify-content: center;
 }
 
-.inputPassword {
-  margin-bottom: 1em;
-}
-
 h1 {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Lobster", "Arial";
 }
-
-p {
-  font-family: "Open Sans", "Arial";
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
-input {
-  border: black solid 0.5px;
+#pw1 {
+  border: 2px solid black;
   border-radius: 5px;
+  font-size: 20px;
 }
 
-@media screen and (min-width: 7000px) {
-  h1 {
-    color: red;
-  }
+#pw2 {
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+}
 
+#showPW {
+  height: 50px;
+  font-size: 20px;
+  color: white;
+  border: black;
+  border-radius: 5px;
+  background-color: black;
+}
+
+div {
+  font-size: 1.5rem;
+  margin: auto;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 700px) {
   main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
+    padding: 0%;
+    margin-top: 10rem;
 
-h1 {
-  text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  div {
+    margin: 0;
+    display: grid;
+    align-content: center;
+  }
 }

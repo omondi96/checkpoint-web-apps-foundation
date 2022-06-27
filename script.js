@@ -1,106 +1,75 @@
-const firstPassword = document.querySelector("#firstInput");
-const secondPassword = document.querySelector("#secondInput");
+const btnShow = document.querySelector("#showPW");
 
-const changeButton = document.querySelector("#changeButton");
+btnShow.addEventListener("click", () => {
+  const inputPW1 = document.querySelector("#pw1");
+  const inputPW2 = document.querySelector("#pw2");
 
-const answerEqual = document.querySelector("#answerEqual");
-const answerTenCharacters = document.querySelector("#answerTenCharacters");
-const answerLowerCase = document.querySelector("#answerLowerCase");
-const answerUpperCase = document.querySelector("#answerUpperCase");
-const answerContainsNumbers = document.querySelector("#answerContainsNumbers");
+  if (input.type === "password") {
+    inputPW1.type = "text";
+    inputPW2.type = "text";
+    btnShow.innerText = "Hide Password";
+  } else if (input.type === "text") {
+    inputPW1.type = "password";
+    inputPW2.type = "password";
+    btnShow.innerText = "Show Password";
+  }
+});
 
-secondPassword.addEventListener("change", startCheck);
-firstPassword.addEventListener("change", startCheck);
+const wrapper = document.querySelector("#wrapper");
 
-function startCheck() {
-  checkLength();
-  checkNumber();
-  checkUpperCase();
-  checkLowerCase();
+wrapper.addEventListener("input", checkPasswords);
 
-  checkEqual();
-}
+function comparePasswords() {
+  const pw1 = wrapper.querySelector("#pw1");
+  const pw2 = wrapper.querySelector("#pw2");
 
-function checkEqual() {
-  if (firstPassword.value === secondPassword.value) {
-    answerEqual.textcontent = "yes";
+  if (pw1.value === pw2.value && pw1.value.length > 0) {
+    return true;
   } else {
-    answerEqual.textcontent = "no";
-    answerTenCharacters.textcontent = "no";
-    answerUpperCase.textcontent = "no";
-    answerLowerCase.textcontent = "no";
-    answerContainsNumbers.textcontent = "no";
+    return false;
   }
 }
 
-function checkLength() {
-  if (firstPassword.value.length >= 10) {
-    answerTenCharacters.textcontent = "yes";
+function checkPasswords() {
+  const equal = document.querySelector("#equal");
+
+  if (comparePasswords()) {
+    equal.innerText = "Passwords are equal 😻";
   } else {
-    answerTenCharacters.textcontent = "no";
+    equal.innerText = "Passwords are equal 😿";
   }
-}
 
-function checkNumber() {
-  let checknumber = 0;
+  const lower = document.querySelector("#lower");
+  const lowerCase = /[a-z]/g;
 
-  for (let i = 0; firstPassword.value.length > i; i++) {
-    if (isNaN(firstPassword.value[i])) {
-    } else {
-      checknumber++;
-      console.log(checknumber);
-    }
-  }
-  if (checknumber === 0) {
-    answerContainsNumbers.textcontent = "no";
+  if (pw1.value === pw2.value && lowerCase.test(pw1.value)) {
+    lower.innerText = "Lower Case Letters 😻";
   } else {
-    answerContainsNumbers.textcontent = "yes";
+    lower.innerText = "Lower Case Letters 😿";
   }
-}
 
-function checkUpperCase() {
-  let numberCase = 0;
+  const upper = document.querySelector("#upper");
+  const upperCase = /[A-Z]/g;
 
-  for (let i = 0; i < firstPassword.value.length; i++) {
-    if (
-      firstPassword.value[i] === firstPassword.value[i].toUpperCase() &&
-      isNaN(firstPassword.value[i])
-    )
-      numberCase++;
-  }
-  if (numberCase > 0) {
-    answerUpperCase.textContent = "😍";
+  if (pw1.value === pw2.value && upperCase.test(pw1.value)) {
+    upper.innerText = "Upper Case Letters 😻";
   } else {
-    answerUpperCase.textcontent = "😢";
+    upper.innerText = "Upper Case Letters 😿";
   }
-}
 
-function checkLowerCase() {
-  let numberCase = 0;
+  const numbers = document.querySelector("#numbers");
+  const number = /[0-9]/g;
 
-  for (let i = 0; i < firstPassword.value.length; i++) {
-    if (
-      firstPassword.value[i] === firstPassword.value[i].toLowerCase() &&
-      isNaN(firstPassword.value[i])
-    )
-      numberCase++;
-  }
-  if (numberCase > 0) {
-    answerLowerCase.textcontent = "yes";
+  if (pw1.value === pw2.value && number.test(pw1.value)) {
+    numbers.innerText = "Contains Numbers 😻";
   } else {
-    answerLowerCase.textcontent = "no";
+    numbers.innerText = "Contains Numbers 😿";
   }
-}
 
-// ab hier Button Change
-changeButton.addEventListener("click", changeHidden);
-
-function changeHidden() {
-  if (firstPassword.type === "password") {
-    firstPassword.type = "text";
-    secondPassword.type = "text";
+  const long = document.querySelector("#long");
+  if (pw1.value === pw2.value && pw1.value.length >= 10) {
+    long.innerText = "At least character long 😻";
   } else {
-    firstPassword.type = "password";
-    secondPassword.type = "password";
+    long.innerText = "At least character long 😿 ";
   }
 }
